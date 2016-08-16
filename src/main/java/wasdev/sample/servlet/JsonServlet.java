@@ -58,7 +58,8 @@ public class JsonServlet extends HttpServlet {
 	        char[] chars = new char[1024];
 	        while ((read = reader.read(chars)) != -1)
 	            buffer.append(chars, 0, read); 
-			weather=reader.toString();
+			weather=buffer.toString()+"::"+buffer;
+			
 			//GET https://<username>:<password>@twcservice.mybluemix.net:443/api/weather/v1/location/97229%3A4%3AUS/forecast/hourly/48hour.json?units=m&language=en-US
 			//weather=jsonReader.getWeather("https://6a86e761-fbad-41f9-b3e0-882b54f542f7:3Icqlwztco@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112");
 			//weather=jsonReader.getWeather("http://echo.jsontest.com/insert-key-here/insert-value-here/key/value");
