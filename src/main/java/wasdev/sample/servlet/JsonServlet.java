@@ -42,14 +42,14 @@ public class JsonServlet extends HttpServlet {
 	    BufferedReader reader = null;
 		
 		String weather="";
-		String urlString="https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d:vlX9X7iVGd@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
+		String urlString="https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d%3vlX9X7iVGd@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
 		try {
 			
 	        URL url = new URL(urlString);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("username", "fcb61d2d-3a6d-4c39-9b75-70172d3df53d");
-			conn.setRequestProperty("password", "vlX9X7iVGd");
+			//conn.setRequestProperty("username", "fcb61d2d-3a6d-4c39-9b75-70172d3df53d");
+			//conn.setRequestProperty("password", "vlX9X7iVGd");
 			conn.setRequestProperty("Accept", "application/json");
 	        reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        StringBuffer buffer = new StringBuffer();
