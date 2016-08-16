@@ -3,7 +3,7 @@ package wasdev.sample.servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -48,6 +48,8 @@ public class JsonServlet extends HttpServlet {
 	        URL url = new URL(urlString);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
+			conn.setRequestProperty("username", "fcb61d2d-3a6d-4c39-9b75-70172d3df53d");
+			conn.setRequestProperty("password", "vlX9X7iVGd");
 			conn.setRequestProperty("Accept", "application/json");
 	        reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        StringBuffer buffer = new StringBuffer();
