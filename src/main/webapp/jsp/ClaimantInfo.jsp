@@ -8,7 +8,7 @@
 </head>
 <body>
 Claimant Portal<br>
-<form action="../JsonServlet">			
+<form action="/JsonServlet">			
 			 Please enter your details<br>
 			Name: <input type="text" name="color"size="20px"><br>
 			Address: <textarea rows="4" cols="50" name="name"></textarea><br>
