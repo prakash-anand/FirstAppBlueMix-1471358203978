@@ -41,7 +41,7 @@ public class JsonServlet extends HttpServlet {
 	    BufferedReader reader = null;
 		
 		String weather="";
-		String urlString="https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d:vlX9X7iVGd@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
+		String urlString="https://2c435666-86e9-4041-8c17-46c807cf59fc:7lnNFiTeLZ@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
 		try {
 			
 	        URL url = new URL(urlString);
