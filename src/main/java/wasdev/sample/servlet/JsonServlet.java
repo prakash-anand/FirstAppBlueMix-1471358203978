@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.servlet.ServletException;
@@ -45,7 +46,10 @@ public class JsonServlet extends HttpServlet {
 		try {
 			
 	        URL url = new URL(urlString);
-	        reader = new BufferedReader(new InputStreamReader(url.openStream()));
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/json");
+	        reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        StringBuffer buffer = new StringBuffer();
 	        int read;
 	        char[] chars = new char[1024];
