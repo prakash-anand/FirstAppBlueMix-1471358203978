@@ -134,14 +134,15 @@ public class JsonServlet extends HttpServlet {
 
 			   Executor executor = Executor.newInstance().auth(username, password);
 			   Response responsefromAPI = executor.execute(profileRequest);
-			   HttpResponse httpResponse = responsefromAPI.returnResponse();
-			   response.setStatus(httpResponse.getStatusLine().getStatusCode());
+			 //  HttpResponse httpResponse = responsefromAPI.returnResponse();
+			   //response.setStatus(httpResponse.getStatusLine().getStatusCode());
 /*
 			   ServletOutputStream servletOutputStream = response.getOutputStream();
 			   httpResponse.getEntity().writeTo(servletOutputStream);
 			   servletOutputStream.flush();
 			   servletOutputStream.close();*/
 			   String jsonResponse= responsefromAPI.returnResponse().toString();
+			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("weather", jsonResponse);
 			   
 			} catch (Exception e) {
