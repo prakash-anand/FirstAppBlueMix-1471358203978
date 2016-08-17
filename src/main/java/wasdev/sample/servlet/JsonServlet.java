@@ -111,9 +111,9 @@ public class JsonServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Inside Servlet doPost");
 		
-		 String baseURL = "<url>";
-		 String username = "<username>";
-		String password = "<password>";
+		 String baseURL = "https://gateway-s.watsonplatform.net/personality-insights/api";
+		 String username = "46235a77-79d7-44ed-81a4-63468124a3b0";
+		String password = "w3cQvZxjFKu0";
 		String text="Ashok Malik, Journalist "
 +" Perhaps he knew it all along. On Independence Day, Prime Minister Narendra Modi delivered a 100-minute long speech, but the resultant coverage and debate has centred on his reference to troubled regions that are in Pakistani control but disputed internationally, or part of Pakistan but with a contested sovereignty domestically. There were three proper nouns Modi used and it is important to understand the context of each."
 +" First, he spoke of Pakistan-Occupied Kashmir, a part of Kashmir in Pakistani control since 1947. Following the accession of the kingdom of Jammu and Kashmir in October 1947, it belongs to India. Indian maps show it as such. Since 1965, successive Indian governments have been willing to write off Pakistan-Occupied Kashmir and convert the line dividing it and the Kashmir Valley (the Line of Control) into an international border - whether a hard border or, as has been suggested over the past 10-15 years, a soft border permitting trade and movement of peoples."
