@@ -141,7 +141,7 @@ public class JsonServlet extends HttpServlet {
 			   httpResponse.getEntity().writeTo(servletOutputStream);
 			   servletOutputStream.flush();
 			   servletOutputStream.close();*/
-			   String jsonResponse= responsefromAPI.returnResponse().toString();
+			   String jsonResponse= responsefromAPI.returnContent().asString();
 			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("weather", jsonResponse);
 			   
