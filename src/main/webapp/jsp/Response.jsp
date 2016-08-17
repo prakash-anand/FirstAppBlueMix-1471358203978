@@ -10,7 +10,7 @@
 This is the response from Watson
 
 Weather:
-<%=(Stringrequest.getAttribute("weather")%>
+<%=(String)request.getAttribute("weather")%>
 
 </body>
 </html>
