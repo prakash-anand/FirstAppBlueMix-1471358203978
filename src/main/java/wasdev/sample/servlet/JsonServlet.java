@@ -72,7 +72,7 @@ public class JsonServlet extends HttpServlet {
 
 
 		String weather="";
-		String urlString="https://2c435666-86e9-4041-8c17-46c807cf59fc:7lnNFiTeLZ@twcservice.mybluemix.net:443/api/weather/v2/location/point?postalKey=30339%3AUS&language=en-US";
+		String urlString="https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d:vlX9X7iVGd@twcservice.mybluemix.net:443/api/weather/v2/location/point?postalKey=30339%3AUS&language=en-US";
 		//urlString="http://ip.jsontest.com/?callback=showMyIP";
 		try {
 			
@@ -91,7 +91,7 @@ public class JsonServlet extends HttpServlet {
 			weather=buffer.toString()+"::"+buffer;
 			
 			//GET https://<username>:<password>@twcservice.mybluemix.net:443/api/weather/v1/location/97229%3A4%3AUS/forecast/hourly/48hour.json?units=m&language=en-US
-			//weather=jsonReader.getWeather("https://6a86e761-fbad-41f9-b3e0-882b54f542f7:3Icqlwztco@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112");
+			//weather=jsonReader.getWeather("https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d:vlX9X7iVGd@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112");
 			//weather=jsonReader.getWeather("http://echo.jsontest.com/insert-key-here/insert-value-here/key/value");
 			System.out.println("Weather: "+ weather);
 		} catch (Exception e) {
@@ -143,12 +143,47 @@ public class JsonServlet extends HttpServlet {
 			   servletOutputStream.close();*/
 			   String jsonResponse= responsefromAPI.returnContent().asString();
 			   System.out.println("JsonResponse: "+jsonResponse);
+			   request.setAttribute("personality", jsonResponse);
+			   
+			} catch (Exception e) {
+			   System.out.println("Service error: " + e.getMessage());
+			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
+			}
+		
+		
+		
+		
+		try {
+			baseURL="http://twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
+			 String weatherUsername = "fcb61d2d-3a6d-4c39-9b75-70172d3df53d";
+				String weatherPassword = "vlX9X7iVGd";
+
+			   URI profileURI = new URI(baseURL).normalize();
+			   //Request profileRequest = Request.Post(profileURI)
+			     // .addHeader("Accept", "application/json")
+			     // .addHeader("Content-Language", "en")
+			     // .bodyString(text, ContentType.TEXT_PLAIN);
+			   Request profileRequest= Request.Get(profileURI)
+					      .addHeader("Accept", "application/json");
+
+			   Executor executor = Executor.newInstance().auth(weatherUsername, weatherPassword);
+			   Response responsefromAPI = executor.execute(profileRequest);
+			 //  HttpResponse httpResponse = responsefromAPI.returnResponse();
+			   //response.setStatus(httpResponse.getStatusLine().getStatusCode());
+/*
+			   ServletOutputStream servletOutputStream = response.getOutputStream();
+			   httpResponse.getEntity().writeTo(servletOutputStream);
+			   servletOutputStream.flush();
+			   servletOutputStream.close();*/
+			   String jsonResponse= responsefromAPI.returnContent().asString();
+			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("weather", jsonResponse);
 			   
 			} catch (Exception e) {
 			   System.out.println("Service error: " + e.getMessage());
 			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
 			}
+		
 		
 	    
 	    request.getRequestDispatcher("/jsp/Response.jsp").forward(request, response); 
