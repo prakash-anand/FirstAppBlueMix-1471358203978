@@ -46,10 +46,8 @@
         		<!-- New Dependencies for RnR Service -->
 		<dependency>
 			<groupId>com.ibm.watson.developer_cloud</groupId>
-			<artifactId>java-sdk</artifactId>
-			<version>2.8.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/java-sdk-2.8.0-jar-with-dependencies.jar</systemPath>
+			<artifactId>java-wrapper</artifactId>
+			<version>2.10.0</version>
 		</dependency>
 		
 				<dependency>
