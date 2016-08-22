@@ -64,41 +64,8 @@ public class JsonServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Inside Servlet doGet");
-		//PersonalityInsights personalityInsight=new PersonalityInsights();
-		
-		response.setContentType("text/html");
-	  //  PrintWriter out =response.getWriter();
-	    BufferedReader reader = null;
-
-
 		String weather="";
-		String urlString="https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d:vlX9X7iVGd@twcservice.mybluemix.net:443/api/weather/v2/location/point?postalKey=30339%3AUS&language=en-US";
-		//urlString="http://ip.jsontest.com/?callback=showMyIP";
-		try {
-			
-	        URL url = new URL(urlString);
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			//conn.setRequestProperty("username", "fcb61d2d-3a6d-4c39-9b75-70172d3df53d");
-			//conn.setRequestProperty("password", "vlX9X7iVGd");
-			conn.setRequestProperty("Accept", "application/json");
-	        reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        StringBuffer buffer = new StringBuffer();
-	        int read;
-	        char[] chars = new char[1024];
-	        while ((read = reader.read(chars)) != -1)
-	            buffer.append(chars, 0, read); 
-			weather=buffer.toString()+"::"+buffer;
-			
-			//GET https://<username>:<password>@twcservice.mybluemix.net:443/api/weather/v1/location/97229%3A4%3AUS/forecast/hourly/48hour.json?units=m&language=en-US
-			//weather=jsonReader.getWeather("https://fcb61d2d-3a6d-4c39-9b75-70172d3df53d:vlX9X7iVGd@twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112");
-			//weather=jsonReader.getWeather("http://echo.jsontest.com/insert-key-here/insert-value-here/key/value");
-			System.out.println("Weather: "+ weather);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
+	
 		request.setAttribute("weather", weather);
 	    request.getRequestDispatcher("/jsp/Response.jsp").forward(request, response);
 		
@@ -122,18 +89,37 @@ public class JsonServlet extends HttpServlet {
 +" Third, Balochistan is in a class by itself. In 1947, it existed as a frontier region comprising a clutch of kingdoms and some territory under the suzerainty of Oman, an Arab kingdom that was an ally of the British Raj. The biggest Baloch kingdom was the Khanate of Kalat. While it acceded to Pakistan, allegedly following promises by Mohammad Ali Jinnah that were never kept, Kalat had never quite been part of British India. Its position vis-à-vis the Raj was not very different from that of Nepal. As such, if Nepal is not part of India, there is logic to suggest that Kalat should not be part of Pakistan." 
 +" Certainly the former royal family of Kalat, members of which live in London, still fancy their claims. Another princely state was Las Bela, with its capital city, Bela, famous for not having had a European visitor between Alexander the Great and the British in the 19th century. Alexander visited Balochistan on his way home from India and is believed to have boarded a ship from the Makran Coast, near today's Gwadar. ";
 		
-		
+	//Connecting to Watson Personality Insight API	
 		
 		try {
-
+			
+			PersonalityInsights personitlyInsight=new PersonalityInsights();
+			personitlyInsight.setUsernameAndPassword(username, password);
+			personitlyInsight.setEndPoint(baseURL + "/v2/profile");
+			
+			//  JsonReader jReader = new JsonReader(new FileReader("profile.json"));
+			//  Content content = GsonSingleton.getGson().fromJson(jReader, Content.class);
+			//  ProfileOptions options = new ProfileOptions().contentItems(content.getContentItems());
+			  ProfileOptions options = new ProfileOptions()
+			  .text(text)
+			  .language(Language.ENGLISH);
+			  
+			  Profile profile = personitlyInsight.getProfile(options);
+			  System.out.println(profile);
+			  
+			  
+/*
 			   URI profileURI = new URI(baseURL + "/v2/profile").normalize();
+			 
 			   Request profileRequest = Request.Post(profileURI)
 			      .addHeader("Accept", "application/json")
 			      .addHeader("Content-Language", "en")
 			      .bodyString(text, ContentType.TEXT_PLAIN);
 
+
 			   Executor executor = Executor.newInstance().auth(username, password);
 			   Response responsefromAPI = executor.execute(profileRequest);
+*/
 			 //  HttpResponse httpResponse = responsefromAPI.returnResponse();
 			   //response.setStatus(httpResponse.getStatusLine().getStatusCode());
 /*
@@ -141,10 +127,13 @@ public class JsonServlet extends HttpServlet {
 			   httpResponse.getEntity().writeTo(servletOutputStream);
 			   servletOutputStream.flush();
 			   servletOutputStream.close();*/
-			   String jsonResponse= responsefromAPI.returnContent().asString();
+			 /* 
+			  String jsonResponse= responsefromAPI.returnContent().asString();
 			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("personality", jsonResponse);
-			   
+			   */
+			   System.out.println("JsonResponse: "+profile);
+			   request.setAttribute("personality", profile);			   
 			} catch (Exception e) {
 			   System.out.println("Service error: " + e.getMessage());
 			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
@@ -152,7 +141,7 @@ public class JsonServlet extends HttpServlet {
 		
 		
 		
-		
+		//Connecting to WeatherCompany API
 		try {
 			baseURL="http://twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
 			 String weatherUsername = "fcb61d2d-3a6d-4c39-9b75-70172d3df53d";
