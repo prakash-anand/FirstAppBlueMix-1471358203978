@@ -91,9 +91,9 @@ public class JsonServlet extends HttpServlet {
 			//  .language(Language.ENGLISH);
 			  
 			 // Profile profile =  personitlyInsight.getProfile(options);
-		//	  Profile profile = personitlyInsight.getProfile(text);
+			  Profile profile = personitlyInsight.getProfile(text);
 		
-			//  System.out.println(profile);
+			  System.out.println(profile);
 
 			System.out.println("Done with Watson services");
 /*
@@ -120,8 +120,8 @@ public class JsonServlet extends HttpServlet {
 			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("personality", jsonResponse);
 			   */
-			 //  System.out.println("JsonResponse: "+profile);
-			   request.setAttribute("personality", "jdlfkjlajf");			   
+			   System.out.println("JsonResponse: "+profile);
+			   request.setAttribute("personality", profile);			   
 			} catch (Exception e) {
 			   System.out.println("Service error: " + e.getMessage());
 			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
@@ -140,11 +140,12 @@ public class JsonServlet extends HttpServlet {
 			     // .addHeader("Accept", "application/json")
 			     // .addHeader("Content-Language", "en")
 			     // .bodyString(text, ContentType.TEXT_PLAIN);
-			   Request profileRequest= Request.Get(profileURI)
-					      .addHeader("Accept", "application/json");
+			
+			   //Request profileRequest= Request.Get(profileURI)
+				//	      .addHeader("Accept", "application/json");
 
-			   Executor executor = Executor.newInstance().auth(weatherUsername, weatherPassword);
-			   Response responsefromAPI = executor.execute(profileRequest);
+			  // Executor executor = Executor.newInstance().auth(weatherUsername, weatherPassword);
+			//   Response responsefromAPI = executor.execute(profileRequest);
 			 //  HttpResponse httpResponse = responsefromAPI.returnResponse();
 			   //response.setStatus(httpResponse.getStatusLine().getStatusCode());
 /*
@@ -152,9 +153,9 @@ public class JsonServlet extends HttpServlet {
 			   httpResponse.getEntity().writeTo(servletOutputStream);
 			   servletOutputStream.flush();
 			   servletOutputStream.close();*/
-			   String jsonResponse= responsefromAPI.returnContent().asString();
-			   System.out.println("JsonResponse: "+jsonResponse);
-			   request.setAttribute("weather", jsonResponse);
+			//   String jsonResponse= responsefromAPI.returnContent().asString();
+			//   System.out.println("JsonResponse: "+jsonResponse);
+			   request.setAttribute("weather", "Not implemented");
 			   
 			} catch (Exception e) {
 			   System.out.println("Service error: " + e.getMessage());
