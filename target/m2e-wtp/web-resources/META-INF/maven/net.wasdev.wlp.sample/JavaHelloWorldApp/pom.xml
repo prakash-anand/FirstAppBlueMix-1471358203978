@@ -51,6 +51,13 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/libs/java-sdk-2.8.0-jar-with-dependencies.jar</systemPath>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/com.ibm.watson.developer_cloud/java-wrapper -->
+<dependency>
+    <groupId>com.ibm.watson.developer_cloud</groupId>
+    <artifactId>java-wrapper</artifactId>
+    <version>0.1.4</version>
+</dependency>
+
 		
 				<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
