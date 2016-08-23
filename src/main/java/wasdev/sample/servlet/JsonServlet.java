@@ -80,8 +80,8 @@ public class JsonServlet extends HttpServlet {
 			
 			PersonalityInsights personitlyInsight=new PersonalityInsights();
 			personitlyInsight.setUsernameAndPassword(username, password);
-			personitlyInsight.setEndPoint(baseURL + "/v2/profile");
-			System.out.println("BaseUSR: "+baseURL + "/v2/profile");
+			//personitlyInsight.setEndPoint(baseURL + "/v2/profile");
+			System.out.println("BaseUSR: "+personitlyInsight.getEndPoint());
 			
 			//  JsonReader jReader = new JsonReader(new FileReader("profile.json"));
 			//  Content content = GsonSingleton.getGson().fromJson(jReader, Content.class);
@@ -123,7 +123,7 @@ public class JsonServlet extends HttpServlet {
 			   System.out.println("JsonResponse: "+profile);
 			   request.setAttribute("personality", profile);			   
 			} catch (Exception e) {
-			   System.out.println("Service error: " + e.getMessage());
+			   System.out.println("Service error: " + e);
 			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
 			}
 		
