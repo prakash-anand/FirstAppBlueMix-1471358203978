@@ -81,6 +81,7 @@ public class JsonServlet extends HttpServlet {
 			PersonalityInsights personitlyInsight=new PersonalityInsights();
 			personitlyInsight.setUsernameAndPassword(username, password);
 			personitlyInsight.setEndPoint(baseURL + "/v2/profile");
+			System.out.println("BaseUSR: "+baseURL + "/v2/profile");
 			
 			//  JsonReader jReader = new JsonReader(new FileReader("profile.json"));
 			//  Content content = GsonSingleton.getGson().fromJson(jReader, Content.class);
@@ -90,10 +91,11 @@ public class JsonServlet extends HttpServlet {
 			//  .language(Language.ENGLISH);
 			  
 			 // Profile profile =  personitlyInsight.getProfile(options);
-			  Profile profile = personitlyInsight.getProfile(text);
-			  System.out.println(profile);
-			  
-			  
+		//	  Profile profile = personitlyInsight.getProfile(text);
+		
+			//  System.out.println(profile);
+
+			System.out.println("Done with Watson services");
 /*
 			   URI profileURI = new URI(baseURL + "/v2/profile").normalize();
 			 
@@ -118,8 +120,8 @@ public class JsonServlet extends HttpServlet {
 			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("personality", jsonResponse);
 			   */
-			   System.out.println("JsonResponse: "+profile);
-			   request.setAttribute("personality", profile);			   
+			 //  System.out.println("JsonResponse: "+profile);
+			   request.setAttribute("personality", "jdlfkjlajf");			   
 			} catch (Exception e) {
 			   System.out.println("Service error: " + e.getMessage());
 			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
