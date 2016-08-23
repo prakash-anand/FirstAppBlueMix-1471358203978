@@ -12,7 +12,7 @@ Claimant Portal<br>
 			 Please enter your details<br>
 			Name: <input type="text" name="color"size="20px"><br>
 			Address: <textarea rows="4" cols="50" name="name"></textarea><br>
-			Post Code: <input type="text" name="address"size="20px"><br>
+			Post Code: <input type="text" name="postcode"size="20px"><br>
 			Interests: <textarea rows="4" cols="50" name="interests"></textarea><br>
 			Remarks: <textarea rows="4" cols="50" name="remarks"></textarea><br>
 			<input type="submit" value="submit">						
