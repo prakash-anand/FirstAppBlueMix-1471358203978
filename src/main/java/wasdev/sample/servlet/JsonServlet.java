@@ -22,8 +22,7 @@ import org.apache.http.client.fluent.Response;
 
 import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
 import com.ibm.watson.developer_cloud.personality_insights.v2.model.Profile;
-import com.ibm.watson.developer_cloud.personality_insights.v2.model.ProfileOptions;
-import com.ibm.watson.developer_cloud.personality_insights.v2.model.ProfileOptions.Language;
+
 
 
 
@@ -86,9 +85,9 @@ public class JsonServlet extends HttpServlet {
 			//  JsonReader jReader = new JsonReader(new FileReader("profile.json"));
 			//  Content content = GsonSingleton.getGson().fromJson(jReader, Content.class);
 			//  ProfileOptions options = new ProfileOptions().contentItems(content.getContentItems());
-			  ProfileOptions options = new ProfileOptions()
-			  .text(text)
-			  .language(Language.ENGLISH);
+			//  ProfileOptions options = new ProfileOptions()
+			//  .text(text)
+			//  .language(Language.ENGLISH);
 			  
 			 // Profile profile =  personitlyInsight.getProfile(options);
 			  Profile profile = personitlyInsight.getProfile(text);
