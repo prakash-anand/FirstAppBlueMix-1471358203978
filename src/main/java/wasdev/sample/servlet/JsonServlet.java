@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
@@ -20,8 +21,7 @@ import org.apache.http.client.fluent.Response;
 //import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
 
 
-import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
-import com.ibm.watson.developer_cloud.personality_insights.v2.model.Profile;
+import org.apache.http.entity.ContentType;
 
 
 
@@ -78,10 +78,11 @@ public class JsonServlet extends HttpServlet {
 		
 		try {
 			
-			PersonalityInsights personitlyInsight=new PersonalityInsights();
-			personitlyInsight.setUsernameAndPassword(username, password);
+			//PersonalityInsights personitlyInsight=new PersonalityInsights();
+			//personitlyInsight.setUsernameAndPassword(username, password);
 			//personitlyInsight.setEndPoint(baseURL + "/v2/profile");
-			System.out.println("personalityInsight: "+personitlyInsight.getEndPoint());
+		//	System.out.println("personalityInsight: "+personitlyInsight.getEndPoint());
+
 			
 			//  JsonReader jReader = new JsonReader(new FileReader("profile.json"));
 			//  Content content = GsonSingleton.getGson().fromJson(jReader, Content.class);
@@ -91,12 +92,12 @@ public class JsonServlet extends HttpServlet {
 			//  .language(Language.ENGLISH);
 			  
 			 // Profile profile =  personitlyInsight.getProfile(options);
-			  Profile profile = personitlyInsight.getProfile(text);
+			//  Profile profile = personitlyInsight.getProfile(text);
 		
-			  System.out.println(profile);
+			//  System.out.println(profile);
 
 			System.out.println("Done with Watson services");
-/*
+
 			   URI profileURI = new URI(baseURL + "/v2/profile").normalize();
 			 
 			   Request profileRequest = Request.Post(profileURI)
@@ -107,7 +108,7 @@ public class JsonServlet extends HttpServlet {
 
 			   Executor executor = Executor.newInstance().auth(username, password);
 			   Response responsefromAPI = executor.execute(profileRequest);
-*/
+
 			 //  HttpResponse httpResponse = responsefromAPI.returnResponse();
 			   //response.setStatus(httpResponse.getStatusLine().getStatusCode());
 /*
@@ -120,8 +121,8 @@ public class JsonServlet extends HttpServlet {
 			   System.out.println("JsonResponse: "+jsonResponse);
 			   request.setAttribute("personality", jsonResponse);
 			   */
-			   System.out.println("JsonResponse: "+profile);
-			   request.setAttribute("personality", profile);			   
+			   System.out.println("JsonResponse: "+profileRequest);
+			   request.setAttribute("personality", profileRequest);			   
 			} catch (Exception e) {
 			   System.out.println("Service error: " + e);
 			  // resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
