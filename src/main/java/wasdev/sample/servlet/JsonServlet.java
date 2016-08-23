@@ -90,7 +90,8 @@ public class JsonServlet extends HttpServlet {
 			  .text(text)
 			  .language(Language.ENGLISH);
 			  
-			  Profile profile = personitlyInsight.getProfile(options);
+			 // Profile profile =  personitlyInsight.getProfile(options);
+			  Profile profile = personitlyInsight.getProfile(text);
 			  System.out.println(profile);
 			  
 			  
