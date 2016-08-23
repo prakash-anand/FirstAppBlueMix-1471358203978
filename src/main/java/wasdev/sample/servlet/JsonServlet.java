@@ -3,23 +3,24 @@ package wasdev.sample.servlet;
 
 
 import java.io.IOException;
-
 import java.net.URI;
 
 import javax.servlet.ServletException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 
-import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
+//import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
 
+
+import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
 import com.ibm.watson.developer_cloud.personality_insights.v2.model.Profile;
 import com.ibm.watson.developer_cloud.personality_insights.v2.model.ProfileOptions;
 import com.ibm.watson.developer_cloud.personality_insights.v2.model.ProfileOptions.Language;
