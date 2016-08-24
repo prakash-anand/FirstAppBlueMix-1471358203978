@@ -57,8 +57,12 @@ public class JsonServlet extends HttpServlet {
 		try {
 			PersonalityInsightHelper personalityHelper = new PersonalityInsightHelper();
 			String personalityInsight = personalityHelper
-					.personalityInsightFluent(request.getParameterValues("remarks").toString());
-			System.out.println("Remarks: "+ request.getParameterValues("remarks").toString());
+					.personalityInsightFluent(request.getParameter("remarks"));
+			
+			if (personalityInsight.equalsIgnoreCase(""))
+				personalityInsight="Exception in calling Personality API";
+			
+			System.out.println("Remarks: "+ request.getParameter("remarks"));
 			System.out.println("personality: " + personalityInsight);
 			request.setAttribute("personality", personalityInsight);
 
@@ -66,8 +70,12 @@ public class JsonServlet extends HttpServlet {
 			 * Get Weather Company Data
 			 */
 			WeatherCompanyHelper weatherHelper = new WeatherCompanyHelper();
-			String weatherPostcode = weatherHelper.getWeatherPostCode(request.getParameterValues("postcode").toString());
-			System.out.println("Postcode: "+ request.getParameterValues("postcode").toString());
+			String weatherPostcode = weatherHelper.getWeatherPostCode(request.getParameter("postcode"));
+			
+			if (weatherPostcode.equalsIgnoreCase(""))
+				weatherPostcode="Exception in calling Personality API";
+			
+			System.out.println("Postcode: "+ request.getParameter("postcode"));
 			System.out.println("Weather Postcode: " + weatherPostcode);
 			request.setAttribute("weatherPostcode", weatherPostcode);
 		} catch (Exception e) {
