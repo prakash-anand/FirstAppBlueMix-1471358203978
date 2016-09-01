@@ -73,7 +73,7 @@ public class JsonServlet extends HttpServlet {
 			String weatherPostcode = weatherHelper.getWeatherPostCode(request.getParameter("postcode"));
 			
 			if (weatherPostcode.equalsIgnoreCase(""))
-				weatherPostcode="Exception in calling Personality API";
+				weatherPostcode="Exception in calling Weather API";
 			
 			System.out.println("Postcode: "+ request.getParameter("postcode"));
 			System.out.println("Weather Postcode: " + weatherPostcode);

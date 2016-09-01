@@ -12,18 +12,18 @@ public class WeatherCompanyHelper {
 		String weatherPostcode="";
 
 		try {
-			String baseURL = "http://twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
-			String weatherUsername = "fcb61d2d-3a6d-4c39-9b75-70172d3df53d";
-			String weatherPassword = "vlX9X7iVGd";
+			String baseURL = "https://twcservice.stage1.mybluemix.net/api/weather/v1/location/30339%3A4%3AUS/almanac/daily.json?start=0112";
+			String weatherUsername = "c929253b-2767-4dbb-af1b-88b0da43e938";
+			String weatherPassword = "oM6upqP1UV";
 
-			URI profileURI = new URI(baseURL).normalize();
-			Request profileRequest = Request.Post(profileURI)
+			URI weatherURI = new URI(baseURL).normalize();
+			Request weatherRequest = Request.Post(weatherURI)
 					.addHeader("Accept", "application/json")
 					.addHeader("Content-Language", "en");
 
 			Executor executor = Executor.newInstance().auth(weatherUsername,
 					weatherPassword);
-			Response responsefromAPI = executor.execute(profileRequest);
+			Response responsefromAPI = executor.execute(weatherRequest);
 
 			weatherPostcode = responsefromAPI.returnContent().asString();
 		
