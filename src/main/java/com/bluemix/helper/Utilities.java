@@ -19,7 +19,7 @@ public class Utilities {
 		    JSONObject  services;
 
 		    if (envServices != null) {
-		    	services=envServices;
+		    	//services=envServices;
 
 		    } 
 
