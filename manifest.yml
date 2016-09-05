@@ -7,4 +7,4 @@ applications:
   host: FirstAppBlueMix
   disk_quota: 1024M
   services:
-  - Weather Company Data for IBM Bluemix-x8
+  - Personality Insights-f2
